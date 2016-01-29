@@ -4,24 +4,46 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>WWWW | Mechatronics</title>
-<link rel="stylesheet" href="css/foundation.min.css">
+<link rel="stylesheet" href="css/foundation.css">
 </head>
 <body>
  
-<div class="top-bar">
-<div class="top-bar-left">
-<ul class="menu">
-<li class="menu-text">WWWW (World Wide Window Washers)</li>
-</ul>
+
+<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
 </div>
-<div class="top-bar-right">
-<ul class="menu">
-<li><a href="#">Team Roster</a></li>
-<li><a href="#">Progress</a></li>
-<li><a href="#">Three</a></li>
-<li><a href="#">Four</a></li>
-</ul>
+
+<div class="top-bar" id="main-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">WWWW | World Wide Window Washers</li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+      <li><a href="team.html">Meet the Team</a></li>
+      <li><a href="product.html">Our Product</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </div>
 </div>
+
+<div class="top-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="menu-text">WWWW (World Wide Window Washers)</li>
+    </ul>
+  </div>
+
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><a href="#">Team Roster</a></li>
+      <li><a href="#">Progress</a></li>
+      <li><a href="#">Three</a></li>
+      <li><a href="#">Four</a></li>
+    </ul>
+  </div>
 </div>
  
 <div class="callout large primary">
