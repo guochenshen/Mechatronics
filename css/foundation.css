@@ -3273,4 +3273,27 @@ body {
   border-color: transparent #fff transparent transparent; }
 
 
+
+.background {
+  max-height: 25%;
+  overflow: hidden;
+  position: relative;
+}
+
+.background-text {
+  position:absolute;
+  color: #000000;
+  top: 0;
+  left: 0;
+}
+
+.background-logo {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+.background-image-picture {
+  opacity: 0.5;
+}
+
 /*# sourceMappingURL=foundation.css.map */
