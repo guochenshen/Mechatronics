@@ -20,17 +20,10 @@
 
 <div class="top-bar" id="main-menu">
 <ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
-<li><a href="home.html">Home</a></li>
-<li><a href="team.html">Meet the Team</a></li>
-<li><a href="project.html">Our Project</a></li>
-<li><a href="#">Progress Updates</a></li>
-<!-- <li class="has-submenu"><a href="#">Space</a>
-<ul class="submenu menu vertical" data-submenu>
-<li><a href="#">One</a></li>
-<li><a href="#">Two</a></li>
-<li><a href="#">Three</a></li>
-</ul>
-</li> -->
+<li><a href="#" class="top-bar-hover">Home</a></li>
+<li><a href="team.html" class="top-bar-hover">Meet the Team</a></li>
+<li><a href="project.html" class="top-bar-hover">Our Project</a></li>
+<li><a href="progress.html" class="top-bar-hover">Progress Updates</a></li>
 </ul>
 </div>
 
@@ -53,22 +46,33 @@
 </div>
 -->
  
-<div class="callout large primary">
+</br>
+
+<div class="row large-8 large-offset-2 columns">
+
 <div class="row column text-center">
 <h1>Recent Updates</h1>
 </div>
-</div>
-<div class="row" id="content">
-<div class="medium-8 columns">
+
 <div class="blog-post">
 
-<a href="posts/1_proposal.html">
+<a href="posts/4_motorlab.html">
+  <h3>Motor Lab <small>2/10/2016</small></h3>
+</a>
+<a class="th" href="http://placehold.it/850x350">
+  <img class="thumbnail" src="http://placehold.it/850x350">
+</a>
+<p>For the motor lab, our team was tasked with figuring out how 3 different types of motors operated. We wrote the code for an Arduino, allowing us to control the motors with a GUI. The code incorporates PID control, various motor functions, as well as debouncing for a mechanical switch.</p>
+
+</br>
+
+<a href="posts/3_sensorlab.html">
   <h3>Sensor Lab <small>2/3/2016</small></h3>
 </a>
 <a class="th" href="http://placehold.it/850x350">
   <img class="thumbnail" src="http://placehold.it/850x350">
 </a>
-<p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
+<p>For our product to accurately navigate its enviroment, it needs several sensors of different varieties and well written software to correctly receive and interpret the information. The sensor lab allowed us to use 5 different sensors with an Arduino to get readings of physical units using the datasheets from the sensor manufacturer.</p>
 
 </br>
 
@@ -78,7 +82,7 @@
 <a class="th" href="http://placehold.it/850x350">
   <img class="thumbnail" src="http://placehold.it/850x350">
 </a>
-<p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
+<p>The mockup, which consisted mostly of taped cardboard and scrap cans, demonstrated the overall layout of our project and how the sub-systems interacted with each other. We made facsimiles of the systems in our proposed design as the first step in determining the feasibility, as well as any egregious conflicts that we were not aware of.</p>
 
 </br>
 
@@ -88,58 +92,11 @@
 <a class="th" href="http://placehold.it/850x350">
   <img class="thumbnail" src="http://placehold.it/850x350">
 </a>
-<p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
+<p>We made a proposal of our project, which consisted of our initial ideas and design choices. We described various design considerations and comparisions, the subsystems that would go into our project, and the parts that we are considering to build this proejct.</p>
 </div>
 
-<!--
-<div class="blog-post">
-<h3>Awesome blog post title <small>3/6/2015</small></h3>
-<img class="thumbnail" src="http://placehold.it/850x350">
-<p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
-<div class="callout">
-<ul class="menu simple">
-<li><a href="#">Author: Mike Mikers</a></li>
-<li><a href="#">Comments: 3</a></li>
-</ul>
-</div>
-</div>
--->
-
-</div>
-<div class="medium-3 columns" data-sticky-container>
-<div class="sticky" data-sticky data-anchor="content">
-<h4>Categories</h4>
-<ul>
-<li><a href="#">Something relevant</a></li>
-<li><a href="#">Something relevant</a></li>
-<li><a href="#">Something relevant</a></li>
-<li><a href="#">Something relevant</a></li>
-</ul>
-<h4>Another relevant category</h4>
-<ul>
-<li><a href="#">Something relevant</a></li>
-<li><a href="#">Something relevant</a></li>
-<li><a href="#">Something relevant</a></li>
-<li><a href="#">Something relevant</a></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="row column">
-<ul class="pagination" role="navigation" aria-label="Pagination">
-<li class="disabled">Previous</li>
-<li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-<li><a href="#" aria-label="Page 2">2</a></li>
-<li><a href="#" aria-label="Page 3">3</a></li>
-<li><a href="#" aria-label="Page 4">4</a></li>
-<li class="ellipsis"></li>
-<li><a href="#" aria-label="Page 12">12</a></li>
-<li><a href="#" aria-label="Page 13">13</a></li>
-<li><a href="#" aria-label="Next page">Next</a></li>
-</ul>
-</div>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>"
+<script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
 <script>
       $(document).foundation();
     </script>

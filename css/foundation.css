@@ -3296,4 +3296,10 @@ body {
   opacity: 0.5;
 }
 
+
+
+.top-bar-hover:hover {
+  color: #2199E8;
+}
+
 /*# sourceMappingURL=foundation.css.map */
