@@ -30,7 +30,7 @@
 <li><a href="documents.html" class="top-bar-hover">Docs</a></li>
 </ul>
 </div>
- 
+
 <br>
 
 <div class="row">
@@ -64,41 +64,91 @@
 
 <ul class="tabs" data-tabs id="product-tabs">
 <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Overview</a></li>
-<li class="tabs-title"><a href="#panel2">System Requirements</a></li>
+<li class="tabs-title"><a href="#panel2">Requirements</a></li>
 <li class="tabs-title"><a href="#panel3">Functional Architecture</a></li>
 <li class="tabs-title"><a href="#panel4">Cyberphysical Architecture</a></li>
-<li class="tabs-title"><a href="#panel5">System Design Description</a></li>
-<li class="tabs-title"><a href="#panel6">System Implementation</a></li>
-<li class="tabs-title"><a href="#panel7">System Performance</a></li>
+<li class="tabs-title"><a href="#panel5">System Implementation</a></li>
+<li class="tabs-title"><a href="#panel6">System Performance</a></li>
 </ul>
 
   <div class="tabs-content" data-tabs-content="product-tabs">
 
   <div class="tabs-panel is-active" id="panel1">
-    <h3>Overview</h3>
+    <h1>Overview</h1>
+
+    <h2>Windchill is designed to:</h2>
+    <ul>
+      <li>Locomote on a window autonomously</li>
+      <li>Traverse a barrier to reach adjacent windows</li>
+      <li>Operate with minimial human intervention</li>
+    </ul>
   </div>
 
   <div class="tabs-panel" id="panel2">
-    <h3>System Requirements</h3>
+    <h1>Requirements</h1>
+      <h2>The requirements that the device must meet are:</h2>
+      <ul>
+        <li>Automatically wash one side of a multi-section window with sizes from 3'x5' to 6'x5'.</li>
+        <li>Take up a footprint of less than 2 square feet.</li>
+        <li>Cannot contact the ground.</li>
+        <li>Not scratch or damage surface of the window.</li>
+        <li>Function without external installation of infrastructure.</li>
+        <li>Cover and clean 100% of the window at a speed of 10 square feet per minute.</li>
+      </ul>
+
+      <p>The testing stand constists of a pane of glass bordered by 2"x2" 80/20 aluminum framing. The barrier that divides the pane will be a 2"x1" 80/20 divider.The device must also be able to traverse this barrier and clean the other side.</p>
   </div>
 
   <div class="tabs-panel" id="panel3">
-    <h3>Functional Architecture</h3>
+    <h1>Functional Architecture</h1>
+
+    <img src="images/funcarch.png">
+
+    <p>Our device is comprised of several functional subsystems. These subsystems work together to achieve the system requirements of the device.</p>
+    <p>The controller controls the device and all of its components and functions. It takes in information from all of the sensor and uses this to correctly operate the device. This information includes its absolute position on the window, using ultrasonic sensors to take the measurements. It also takes information in from an IMU, giving it angle. Based on these two pieces of information, the system can make adjustments and corrections if it every strays from the path, allowing it to accurately move along to clean the window.</p>
+    <p>This controller operates the locomotion system, which consists of the wheels and motors. This system, combined with the suction system, allows the system to move about on the surface on which its attached. These high torque motors allows the device to remain firmly attached to the window via suction, while still moving around.</p>
+    <p>The device is also attached to the cleaning subsystem, which enables the device to clean the surface of the window while it moves around on the surface. Initially, the cleaning system was required to remove dirt from the surface. This required a more complex system that allowed the system to remain effective even with dirt. However, with the new dirt material, the cleaning system can be simplified due to the ease in which washable marker is removed.</p>
   </div>
 
   <div class="tabs-panel" id="panel4">
     <h3>Cyberphysical Architecture</h3>
+
+    <img src="images/cyberarch.jpg">
+
+    <p>For our central controller, we are using an Arduino Mega. This is the central controller but potentially will be expanded to incoroporate more controllers in a distributed system to control other aspects.</p>
+    <p>To drive our motors, the motor driver used is the VNH2SP30 to control each motor. This chip is available as a breakout board provided by Pololu to make the motor controlling easier. These motors are also connected to the central controller via two encoder pins per motor. This allows the central controller ot determine how much the motors have rotated, which are read as interrupts by the controller.</p>
+    <p>The central controller is also connected to two limit switches, which allow it to detect when it makes contact with an object in the front of it. These pins are connected to digital pins that are pulled to ground when the limit switches are triggered.</p>
+    <p>The IMU used by the controller is a BNO055, again on a breakout board provided by Pololu. This chip communicates over I2C, using the SDA and SCL pins on the Arduino. The chip provides absolute angular position, which is done by sensor fusion that the manufacturer has already done.</p>
+    <p>To find the distance of the devices, the system uses 4 ultrasonic sensors, which are placed on all 4 sides of the device. These ultrasonic sensors are Parallax PING))) sensors. These sensors provide fairly accurate distance measurements for our device to determine its position.</p>
+    <p>To limit the wires necessary, we are communicating and receiving information from our device using an RN-41 Bluetooth chip. This allows us to monitor the function of our device without having to be tethered physically.</p>
   </div>
 
   <div class="tabs-panel" id="panel5">
-    <h3>System Design Description</h3>
+    <h1>System Implementation</h1>
+
+    <h2>Prototype 1</h2>
+      <p>Prototype 1 was produced with a laser cut base and various representative cutouts that did not perform any meaningful functions. It was designed primarily to demonstrate an overall form factor and functional motor and sensor operation.</p>
+      <p>The chassis was produced with a 1/4" laser cut base, and had cutouts that were supposed to represent the various areas that the system would attach to. The front, representing the cleaning system, had a limit switch mounted to it to allow the device to detect any structure that it contacts in the front.</p>
+      <p>The electronics consisted of an Arduino Mega and a motor driver, driving the two motors on the side. The motors provided locomotion capabilities on horizontal surfaces. The wiring was accomplished via breadboards and jumper wires.</p>
+      <img src="images/p1.jpg">
+
+    <h2>Prototype 2</h2>
+      <p>Prototype 2 is our current prototype. It builds upon Prototype 1 by adding structures that permit the device to clean, move, and suction. This system also has provisions for attachment of the gripper systems.</p>
+      <p>The structure was again manufactured from a 1/4" acrylic sheet. This structure had provisions for modularity, with a removeable suction funnel holder, and interchangeable motor mounts, allowing the device to change motors when new motors arrived.<p>
+      <p>The funnel in the center is what connects to the vacuum system, giving the system suction to properly suction onto the surface of the window. Due to our ability to use offboard suction, we are using an offboard vacuum to suction onto the window to save weight on our device.</p>
+      <p>The structure had provisions for mounting more components onto the system, including ultrasonic sensors and limit switches on the front. Unfortunately, due to a test trial that caused the device to detatch from the window, the front of the device and some wiring connections suffered damage. However, this prototype, despite the damage sustained, is still capable of moving on the surface of the window. Most of the sensors still worked, however, and communicated information over Bluetooth to a receiving computer.</p>
+      <img src="images/p2.jpg">
+
+    <h2>Prototype 3</h2>
+      <p>Prototype 3 is current in development, and will demonstrate more solidified electronics wiring and mounting, refined suction system, and improved motion on the surface. It will also make provisions for the new gripper system that will allow the device to cross the barrier.</p>
+      <p>It will be similar in construction to the previous prototypes with an acrylic baseplate. However, all of the mounting and attachment pieces will be made from metal or stock parts designed for the equipment we want to mount.</p>
+      <p>If Prototype 2 is our final prototype, it will be our attempt at successfully achieving the system requirements.</p>
+
+    <h2>Prototype 4</h2>
+      <p>Prototype 4, if made, will be the final prototype made by the team. It will represent our final attempt at producing a device that fulfills the system goals. It will be an optimized and refined solution to the system requirements.</p>
   </div>
 
   <div class="tabs-panel" id="panel6">
-    <h3>System Implementation</h3>
-  </div>
-
-  <div class="tabs-panel" id="panel7">
     <h3>System Performance</h3>
   </div>
 
