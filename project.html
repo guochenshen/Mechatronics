@@ -64,11 +64,13 @@
 
 <ul class="tabs" data-tabs id="product-tabs">
 <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Overview</a></li>
-<li class="tabs-title"><a href="#panel2">Requirements</a></li>
-<li class="tabs-title"><a href="#panel3">Functional Architecture</a></li>
-<li class="tabs-title"><a href="#panel4">Cyberphysical Architecture</a></li>
-<li class="tabs-title"><a href="#panel5">System Implementation</a></li>
-<li class="tabs-title"><a href="#panel6">System Performance</a></li>
+<li class="tabs-title"><a href="#panel2">Problem</a></li>
+<li class="tabs-title"><a href="#panel3">Requirements</a></li>
+<li class="tabs-title"><a href="#panel4">Functional Architecture</a></li>
+<li class="tabs-title"><a href="#panel5">Cyberphysical Architecture</a></li>
+<li class="tabs-title"><a href="#panel6">System Description</a></li>
+<li class="tabs-title"><a href="#panel7">System Implementation</a></li>
+<li class="tabs-title"><a href="#panel8">System Performance</a></li>
 </ul>
 
   <div class="tabs-content" data-tabs-content="product-tabs">
@@ -85,6 +87,13 @@
   </div>
 
   <div class="tabs-panel" id="panel2">
+    <h1>Problem</h1>
+
+    <p>Window washers are constantly subjected to hazardous conditions resulting from high heights, the use soup, water, and other cleaning materials, and support structures that are very easily subject to failure. Window washing is also considered the most dangerous job in the UK [1]. The act of window washing itself is repetitive, monotonous, and generally involves the use of harsh chemicals in outdoor environments, making the task far more suitable for a machine that a human being. Our team proposes an innovative, robotic solution to address this task in the hopes of eliminating the risk associated with window washing.</p>
+    <p>1.  Ball, Matt (October 18, 2004). "MSN Money article". Web.archive.org. Archived from the original on May 9, 2006. Retrieved 2014-05-14.</p>
+  </div>
+
+  <div class="tabs-panel" id="panel3">
     <h1>Requirements</h1>
       <h2>The requirements that the device must meet are:</h2>
       <ul>
@@ -99,7 +108,7 @@
       <p>The testing stand constists of a pane of glass bordered by 2"x2" 80/20 aluminum framing. The barrier that divides the pane will be a 2"x1" 80/20 divider.The device must also be able to traverse this barrier and clean the other side.</p>
   </div>
 
-  <div class="tabs-panel" id="panel3">
+  <div class="tabs-panel" id="panel4">
     <h1>Functional Architecture</h1>
 
     <img src="images/funcarch.png">
@@ -110,7 +119,7 @@
     <p>The device is also attached to the cleaning subsystem, which enables the device to clean the surface of the window while it moves around on the surface. Initially, the cleaning system was required to remove dirt from the surface. This required a more complex system that allowed the system to remain effective even with dirt. However, with the new dirt material, the cleaning system can be simplified due to the ease in which washable marker is removed.</p>
   </div>
 
-  <div class="tabs-panel" id="panel4">
+  <div class="tabs-panel" id="panel5">
     <h3>Cyberphysical Architecture</h3>
 
     <img src="images/cyberarch.jpg">
@@ -123,7 +132,53 @@
     <p>To limit the wires necessary, we are communicating and receiving information from our device using an RN-41 Bluetooth chip. This allows us to monitor the function of our device without having to be tethered physically.</p>
   </div>
 
-  <div class="tabs-panel" id="panel5">
+  <div class="tabs-panel" id="panel6">
+    <h3>System Description</h3>
+
+    <p>Our device is composed of three separate subsystems that allow us to sense our environment, move across window surface, and traverse barriers separating individual window panes. All three subsystems are attached to a main, rectangular chassis.</p>
+
+    <h3> Sensing </h3>
+      <p>Our sensing system is composed of four ultrasonic sensors placed along the sides of the robot chassis, an IMU (inertial measurement unit) sensor placed in its center, and two limit switches. By determining each sensor’s distance from the nearest barrier, we are able to calculate the robot’s overall position within a given window pane. The IMU checks that the robot is level with the surface of window and, when turning, ensures that the robot returns to one of 4 fixed orientations: forward, backward, left, and right. This system allows our robot to always remain in a fixed position, orthogonal the barriers surrounding the window, enables our robot to move along the window in a lawnmower-like pattern, and allows it to robustly handle cases in which the robot might slip along the window. Finally, the two limit switches at the front of the chassis insure that parallel contact with the barrier is achieved before initializing barrier crossing.</p>
+
+      <img src="images/sysdes_sensing.png">
+
+    <h3>Locomotion</h3>
+      <p>Our robot is able to move along a window’s surface due to a customized suction system and high-torque motors that work in tandem to ensure that robot will remain fixed to window’s surface while still able to drive itself forward. The suction system consist of a funnel to provide large surface area contact with the window and a dual-lip, Teflon-coated sealing system that allows the funnel to slide along the windows surface but ensures no loss of contact with that surface. It is attached directly to a vacuum system by a free rotating joint that provides the robot mobility in turning. The high-torque motors in this locomotion subsystem are connected to deformable wheels that also allow a significant amount of surface area to remain in contact with the window, ensuring the traction necessary to move.</p>
+
+      <figure style="display: inline-block">
+        <img src="images/sysdes_rotatingsuction.png">
+        <figcaption>Rotating suction attachment</figcaption>
+      </figure>
+      <figure style="display: inline-block">
+        <img src="images/sysdes_dualseal.png" width="288px" height="181px">
+        <figcaption>Dual Lip Sealing Mechanism</figcaption>
+      </figure>
+      <figure style="display: inline-block">
+        <img src="images/sysdes_wheels.png">
+        <figcaption>Deformable wheels for high traction</figcaption>
+      </figure>
+
+    <h3>Obstacle Traversal</h3>
+      <p> Our barrier crossing system is composed of actuated gripper arms that move along a guide rail. There are two rails along the left and right side walls of the robot and each rail is also actuated by servo arms that allow the robot to push its rail downwards, thereby moving the body of the chassis upward. The gripper arms allow sufficient contact with the obstacle by actuating its fingers into the T-slots of the 8020 rod barrier. Its material insures that it will be able to handle the loads generated by the robot while traversing the barrier. Lastly, a stepper motor with a dual capstan attaches to the gripper arm and is capable of moving the arm along the length of the rail, such that, as the arm drives towards the back of the robot’s chassis, the chassis itself will move forward with respect to the arm.</p>
+
+      <figure style="text-align: center">
+        <img src="images/sysdes_barrierrail.png">
+        <figcaption>Obstacle Traversal Assembly</figcaption>
+      </figure>
+      <br>
+      <figure style="text-align: center">
+        <img src="images/sysdes_barrierservo.png">
+        <figcaption>Servo mount attached to main chassis</figcaption>
+      </figure>
+      <br>
+      <figure style="text-align: center">
+        <img src="images/sysdes_barriergrip.png">
+        <figcaption>Detailed Gripper Arm</figcaption>
+      </figure>
+
+  </div>
+
+  <div class="tabs-panel" id="panel7">
     <h1>System Implementation</h1>
 
     <h2>Prototype 1</h2>
@@ -148,7 +203,7 @@
       <p>Prototype 4, if made, will be the final prototype made by the team. It will represent our final attempt at producing a device that fulfills the system goals. It will be an optimized and refined solution to the system requirements.</p>
   </div>
 
-  <div class="tabs-panel" id="panel6">
+  <div class="tabs-panel" id="panel8">
     <h3>System Performance</h3>
   </div>
 
