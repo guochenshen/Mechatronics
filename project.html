@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
@@ -35,26 +35,26 @@
 
 <div class="row">
 <div class="medium-6 columns">
-<img class="thumbnail" src="images/windchill.jpg">
+<img class="thumbnail" src="images/windchill_final.jpg">
 <div class="row small-up-4">
 <div class="column">
-<img class="thumbnail" src="http://placehold.it/250x200">
+<img class="thumbnail" src="images/final_prototype/cleaning_final.png">
 </div>
 <div class="column">
-<img class="thumbnail" src="http://placehold.it/250x200">
+<img class="thumbnail" src="images/final_prototype/wheel_final.jpg">
 </div>
 <div class="column">
-<img class="thumbnail" src="http://placehold.it/250x200">
+<img class="thumbnail" src="images/final_prototype/electronics_final.png">
 </div>
 <div class="column">
-<img class="thumbnail" src="http://placehold.it/250x200">
+<img class="thumbnail" src="images/final_prototype/suction_final.png">
 </div>
 </div>
 </div>
 <div class="medium-6 large-5 columns">
 <h3>Windchill</h3>
 <p>A fully autonomous window washer that can keep our windows clean, and our window washers safe from dangerous environments.</p>
-<p>Our suction based window cleaner will be able to traverse the surface of the window and clean it without the need for human intervention. It will be able to clean at minumum 10 ft^2 per second.</p>
+<p>Our suction based window cleaner will be able to traverse the surface of the window and clean it without the need for human intervention. It will be able to clean at minimum 10 ft^2 per second.</p>
 
 </div>
 </div>
@@ -124,18 +124,16 @@
 
     <img src="images/cyberarch.jpg">
 
-    <p>For our central controller, we are using an Arduino Mega. This is the central controller but potentially will be expanded to incoroporate more controllers in a distributed system to control other aspects.</p>
-    <p>To drive our motors, the motor driver used is the VNH2SP30 to control each motor. This chip is available as a breakout board provided by Pololu to make the motor controlling easier. These motors are also connected to the central controller via two encoder pins per motor. This allows the central controller ot determine how much the motors have rotated, which are read as interrupts by the controller.</p>
-    <p>The central controller is also connected to two limit switches, which allow it to detect when it makes contact with an object in the front of it. These pins are connected to digital pins that are pulled to ground when the limit switches are triggered.</p>
+    <p>All components of the Windchill are controlled using an Arduino Mega, which uses a 8-bit processor and has numerous analog and digital pins, more than enough for the amount of sensors and components that we want to use.</p>
+    <p> For the navigation and boundary detection sensor system, ultrasonic sensors are used. Ultrasonic sensors (Parallax PING sensors that provide fairly accurate distance measurements) are placed on the all four sides of the robot and mounted close to the surface to detect the separator and edges of the window. An IMU (BNO055) is used to determine to angle of the device. Combining the data from the IMU and the ultrasonic sensors, we are able to determine the absolute position of the device on the surface of the window.</p>
     <p>The IMU used by the controller is a BNO055, again on a breakout board provided by Pololu. This chip communicates over I2C, using the SDA and SCL pins on the Arduino. The chip provides absolute angular position, which is done by sensor fusion that the manufacturer has already done.</p>
-    <p>To find the distance of the devices, the system uses 4 ultrasonic sensors, which are placed on all 4 sides of the device. These ultrasonic sensors are Parallax PING))) sensors. These sensors provide fairly accurate distance measurements for our device to determine its position.</p>
-    <p>To limit the wires necessary, we are communicating and receiving information from our device using an RN-41 Bluetooth chip. This allows us to monitor the function of our device without having to be tethered physically.</p>
+    <p>By using this data, Windchill can move itself across the window in a “lawnmower” path to clean every part of the window autonomously.</p>
   </div>
 
   <div class="tabs-panel" id="panel6">
     <h3>System Description</h3>
 
-    <p>Our device is composed of three separate subsystems that allow us to sense our environment, move across window surface, and traverse barriers separating individual window panes. All three subsystems are attached to a main, rectangular chassis.</p>
+    <p>Our device is composed of three separate subsystems that allow us to sense our environment, move across window surface, and traverse barriers separating individual window panes. All three subsystems are attached to a main, rectangular chassis. Although all pictures below are of our design Protoype 2.0, the same setup would be implemented in our final, carbon fiber prototype.</p>
 
     <h3> Sensing </h3>
       <p>Our sensing system is composed of four ultrasonic sensors placed along the sides of the robot chassis, an IMU (inertial measurement unit) sensor placed in its center, and two limit switches. By determining each sensor’s distance from the nearest barrier, we are able to calculate the robot’s overall position within a given window pane. The IMU checks that the robot is level with the surface of window and, when turning, ensures that the robot returns to one of 4 fixed orientations: forward, backward, left, and right. This system allows our robot to always remain in a fixed position, orthogonal the barriers surrounding the window, enables our robot to move along the window in a lawnmower-like pattern, and allows it to robustly handle cases in which the robot might slip along the window. Finally, the two limit switches at the front of the chassis insure that parallel contact with the barrier is achieved before initializing barrier crossing.</p>
